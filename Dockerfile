@@ -10,10 +10,10 @@ ENV AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
 COPY ./sr.py ./sr.py
 COPY ./goofys ./goofys
 RUN chmod a+x ./goofys
-RUN echo ${AWS_ENDPOINT} ${AWS_BUCKET}
+VOLUME ./s3
 RUN ./goofys \
 --endpoint=${AWS_ENDPOINT} \
-${AWS_BUCKET} app
+${AWS_BUCKET} ./s3
 RUN conda init bash \
 && . ~/.bashrc \
 && conda create -n tf tensorflow -y \
