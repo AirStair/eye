@@ -22,5 +22,6 @@ RUN conda init bash \
 && conda activate tf
 RUN pip install \
 tensorflow \
-tensorflow_hub
+tensorflow_hub \
+boto3
 RUN python /app/sr.py
