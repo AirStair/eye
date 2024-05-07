@@ -1,6 +1,5 @@
 FROM continuumio/miniconda3
 WORKDIR /app
-ADD https://github.com/kahing/goofys/releases/latest/download/goofys
 COPY . /app
 RUN conda init bash \
 && . ~/.bashrc \
