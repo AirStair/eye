@@ -7,12 +7,11 @@ ENV AWS_BUCKET=${AWS_BUCKET}
 ENV AWS_ENDPOINT=${AWS_ENDPOINT}
 ENV AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
 ENV AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
-WORKDIR /app
-COPY ./sr.py /app/sr.py
-COPY ./goofys /app/goofys
-RUN chmod a+x /app/goofys
+COPY ./sr.py ./sr.py
+COPY ./goofys ./goofys
+RUN chmod a+x ./goofys
 RUN echo ${AWS_ENDPOINT} ${AWS_BUCKET}
-RUN /app/goofys \
+RUN ./goofys \
 --endpoint=${AWS_ENDPOINT} \
 ${AWS_BUCKET} app
 RUN conda init bash \
