@@ -1,6 +1,6 @@
 FROM continuumio/miniconda3
 WORKDIR /app
-ADD https://github.com/kahing/goofys/releases/latest/download/goofys --chmod 777
+ADD --chmod 777 https://github.com/kahing/goofys/releases/latest/download/goofys
 COPY . /app
 RUN conda init bash \
 && . ~/.bashrc \
