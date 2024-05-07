@@ -9,7 +9,7 @@ WORKDIR /app
 COPY ./sr.py /app/sr.py
 COPY ./goofys /app/goofys
 RUN chmod a+x /app/goofys
-WORKDIR data
+WORKDIR /app/data/
 RUN /app/goofys \
 --endpoint=${AWS_ENDPOINT} \
 ${AWS_BUCKET} /app/data
