@@ -1,6 +1,14 @@
 import tensorflow as tf
 import tensorflow_hub as hub
+import boto3
+import os
 
+session = boto3.session.Session()
+s3 = session.client(
+    aws_access_key_id=os.environ[''],
+    aws_secret_access_key=os.environ[''],
+    endpoint_url=os.environ['']
+)
 model = hub.load("https://tfhub.dev/captain-pool/esrgan-tf2/1")
 concrete_func = model.signatures[tf.saved_model.DEFAULT_SERVING_SIGNATURE_DEF_KEY]
 
