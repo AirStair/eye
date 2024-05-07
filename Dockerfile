@@ -9,7 +9,7 @@ WORKDIR /app
 COPY ./sr.py /app/sr.py
 COPY ./goofys /app/goofys
 RUN chmod a+x /app/goofys
-RUN echo ${AWS_ENDPOINT}
+RUN mkdir /app/data/
 RUN /app/goofys --endpoint=${AWS_ENDPOINT} ${AWS_BUCKET} /app/data
 RUN conda init bash \
 && . ~/.bashrc \
