@@ -3,7 +3,8 @@ WORKDIR /app
 COPY ./sr.py /app/sr.py
 COPY ./goofys /app/goofys
 RUN chmod a+x /app/goofys
-RUN /app/goofys --endpoint=${AWS_ENDPOINT} ${AWS_BUCKET} /app/data
+RUN echo $AWS_ENDPOINT
+RUN /app/goofys --endpoint=$AWS_ENDPOINT $AWS_BUCKET /app/data
 RUN conda init bash \
 && . ~/.bashrc \
 && conda create -n tf tensorflow -y \
