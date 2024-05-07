@@ -1,7 +1,7 @@
 FROM continuumio/miniconda3
 WORKDIR /app
 COPY ./sr.py /app/sr.py
-COPY --chmod=777 ./goofys /app/goofys
+COPY ./goofys /app/goofys --chmod=777
 RUN conda init bash \
 && . ~/.bashrc \
 && conda create -n tf tensorflow -y \
