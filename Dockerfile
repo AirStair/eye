@@ -1,10 +1,16 @@
+ARG AWS_BUCKET
+ARG AWS_ENDPOINT
+ARG AWS_ACCESS_KEY_ID
+ARG AWS_SECRET_ACCESS_KEY
+ENV AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+ENV AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
 FROM continuumio/miniconda3
 WORKDIR /app
 COPY ./sr.py /app/sr.py
 COPY ./goofys /app/goofys
 RUN chmod a+x /app/goofys
-RUN echo $AWS_ENDPOINT
-RUN /app/goofys --endpoint=$AWS_ENDPOINT $AWS_BUCKET /app/data
+RUN echo ${AWS_ENDPOINT}
+RUN /app/goofys --endpoint=${AWS_ENDPOINT} ${AWS_BUCKET} /app/data
 RUN conda init bash \
 && . ~/.bashrc \
 && conda create -n tf tensorflow -y \
