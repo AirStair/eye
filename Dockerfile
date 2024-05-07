@@ -13,8 +13,8 @@ COPY ./goofys /app/goofys
 RUN chmod a+x /app/goofys
 RUN echo ${AWS_ENDPOINT} ${AWS_BUCKET}
 RUN /app/goofys \
---endpoint=${AWS_ENDPOINT} \
-${AWS_BUCKET} /app
+--endpoint=$(AWS_ENDPOINT) \
+$(AWS_BUCKET) /app
 RUN 
 RUN conda init bash \
 && . ~/.bashrc \
