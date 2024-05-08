@@ -5,6 +5,7 @@ import os
 
 session = boto3.session.Session()
 s3 = session.client(
+  service_name="s3"
   aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID'],
     aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY'],
     endpoint_url=os.environ['AWS_ENDPOINT']
